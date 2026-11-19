@@ -1,0 +1,64 @@
+split,clase,archivo,motivo
+train,cbb,train-cbb-412.jpg,etiqueta contradictoria
+train,cbb,train-cbb-288.jpg,etiqueta contradictoria
+train,cbb,train-cbb-129.jpg,etiqueta contradictoria
+train,cbb,train-cbb-99.jpg,etiqueta contradictoria
+train,cbb,train-cbb-324.jpg,etiqueta contradictoria
+train,cbb,train-cbb-224.jpg,etiqueta contradictoria
+train,cbb,train-cbb-145.jpg,etiqueta contradictoria
+train,cbb,train-cbb-223.jpg,etiqueta contradictoria
+train,cbb,train-cbb-237.jpg,etiqueta contradictoria
+train,cbb,train-cbb-140.jpg,etiqueta contradictoria
+train,cbb,train-cbb-427.jpg,etiqueta contradictoria
+train,cbsd,train-cbsd-125.jpg,etiqueta contradictoria
+train,cbsd,train-cbsd-901.jpg,duplicado exacto
+train,cbsd,train-cbsd-1159.jpg,etiqueta contradictoria
+train,cbsd,train-cbsd-123.jpg,etiqueta contradictoria
+train,cbsd,train-cbsd-1365.jpg,etiqueta contradictoria
+train,cbsd,train-cbsd-999.jpg,etiqueta contradictoria
+train,cbsd,train-cbsd-791.jpg,etiqueta contradictoria
+train,cbsd,train-cbsd-1272.jpg,etiqueta contradictoria
+train,cbsd,train-cbsd-603.jpg,etiqueta contradictoria
+train,cbsd,train-cbsd-760.jpg,etiqueta contradictoria
+train,cbsd,train-cbsd-55.jpg,etiqueta contradictoria
+train,cbsd,train-cbsd-855.jpg,etiqueta contradictoria
+train,cbsd,train-cbsd-316.jpg,etiqueta contradictoria
+train,cgm,train-cgm-498.jpg,etiqueta contradictoria
+train,cgm,train-cgm-528.jpg,etiqueta contradictoria
+train,cgm,train-cgm-33.jpg,etiqueta contradictoria
+train,cgm,train-cgm-375.jpg,etiqueta contradictoria
+train,cgm,train-cgm-603.jpg,etiqueta contradictoria
+train,cgm,train-cgm-424.jpg,etiqueta contradictoria
+train,cgm,train-cgm-282.jpg,etiqueta contradictoria
+train,cgm,train-cgm-242.jpg,etiqueta contradictoria
+train,cgm,train-cgm-442.jpg,etiqueta contradictoria
+train,cgm,train-cgm-62.jpg,etiqueta contradictoria
+train,cmd,train-cmd-2255.jpg,etiqueta contradictoria
+train,cmd,train-cmd-412.jpg,duplicado exacto
+train,cmd,train-cmd-2171.jpg,duplicado exacto
+validation,cbb,validation-cbb-134.jpg,etiqueta contradictoria
+validation,cbb,validation-cbb-86.jpg,etiqueta contradictoria
+validation,cbb,validation-cbb-94.jpg,etiqueta contradictoria
+validation,cbb,validation-cbb-142.jpg,etiqueta contradictoria
+validation,cbb,validation-cbb-152.jpg,etiqueta contradictoria
+validation,cbsd,validation-cbsd-72.jpg,duplicado de otra partición
+validation,cbsd,validation-cbsd-148.jpg,etiqueta contradictoria
+validation,cbsd,validation-cbsd-339.jpg,etiqueta contradictoria
+validation,cbsd,validation-cbsd-300.jpg,etiqueta contradictoria
+validation,cgm,validation-cgm-84.jpg,etiqueta contradictoria
+validation,cmd,validation-cmd-90.jpg,duplicado exacto
+validation,cmd,validation-cmd-813.jpg,duplicado de otra partición
+validation,cmd,validation-cmd-291.jpg,duplicado de otra partición
+validation,healthy,validation-healthy-82.jpg,etiqueta contradictoria
+test,cbb,test-cbb-21.jpg,etiqueta contradictoria
+test,cbsd,test-cbsd-213.jpg,etiqueta contradictoria
+test,cbsd,test-cbsd-398.jpg,etiqueta contradictoria
+test,cbsd,test-cbsd-91.jpg,etiqueta contradictoria
+test,cbsd,test-cbsd-329.jpg,duplicado de otra partición
+test,cbsd,test-cbsd-156.jpg,etiqueta contradictoria
+test,cgm,test-cgm-136.jpg,etiqueta contradictoria
+test,cgm,test-cgm-199.jpg,etiqueta contradictoria
+test,cgm,test-cgm-104.jpg,etiqueta contradictoria
+test,cgm,test-cgm-66.jpg,etiqueta contradictoria
+test,cgm,test-cgm-102.jpg,etiqueta contradictoria
+test,cmd,test-cmd-592.jpg,duplicado de otra partición
