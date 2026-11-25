@@ -1,0 +1,6 @@
+clase,train,validation,test,total
+cbb,455,151,154,760
+cbsd,1430,478,476,2384
+cgm,763,257,253,1273
+cmd,2655,884,885,4424
+healthy,316,105,105,526

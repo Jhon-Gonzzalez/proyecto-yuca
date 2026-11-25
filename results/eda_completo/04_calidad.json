@@ -1,0 +1,19 @@
+{
+  "filas": 9367,
+  "campos_faltantes": {
+    "split": 0,
+    "clase": 0,
+    "archivo": 0
+  },
+  "filas_duplicadas_manifest": 0,
+  "split_invalidos": 0,
+  "clases_invalidas": 0,
+  "sha256_manifest": "885fce54f03e0a5d227baf7ea0d8b5a580b377670f3677f090dbc7c0eaeb141a",
+  "python": "3.14.3",
+  "pandas": "3.1.1",
+  "numpy": "2.5.5",
+  "semilla_muestras": 42,
+  "brillo_contraste": "Media y desviacion poblacional de intensidad en escala L (0-255), imagen completa, sin redimensionar. Solo train.",
+  "archivos_leidos": 9367,
+  "registros_con_error": 0
+}
