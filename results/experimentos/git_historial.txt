@@ -1,0 +1,6 @@
+fc39816 Pipeline: implementacion de modelos E0 E1 E2 E3 y augmentation
+fd323c7 EDA: analisis descriptivo, calidad de datos, desbalance, IQR y visualizaciones
+986dea6 Particiones limpias: sin duplicados entre particiones ni etiquetas contradictorias
+2ab6087 Duplicados: 34 pares idénticos entre particiones, 29 con etiqueta distinta
+df30018 Inventario del dataset iCassava 2019
+20b810a Entorno inicial: PyTorch con MPS, requirements y gitignore

@@ -1,0 +1,36 @@
+{
+  "experimento": "E3",
+  "manifest_sha256": "885fce54f03e0a5d227baf7ea0d8b5a580b377670f3677f090dbc7c0eaeb141a",
+  "semilla": 42,
+  "batch": 32,
+  "max_epocas": 15,
+  "paciencia": 3,
+  "device": "mps",
+  "torch": "2.15.0",
+  "clases": [
+    "cbb",
+    "cbsd",
+    "cgm",
+    "cmd",
+    "healthy"
+  ],
+  "pesos": [
+    2.4698901176452637,
+    0.7858741283416748,
+    1.4728702306747437,
+    0.4232768416404724,
+    3.5563290119171143
+  ],
+  "parametros": {
+    "total": 11179077,
+    "entrenables": 2565
+  },
+  "resolucion": 224,
+  "lr": [
+    0.001
+  ],
+  "weight_decay": 0.01,
+  "pesos_iniciales": "IMAGENET1K_V1",
+  "bloque_E2": null,
+  "augmentation": false
+}

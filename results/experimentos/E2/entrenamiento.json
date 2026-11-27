@@ -1,0 +1,10 @@
+{
+  "experimento": "E2",
+  "epocas_ejecutadas": 11,
+  "mejor_epoca": 8,
+  "mejor_macro_f1_validation": 0.7427583059547748,
+  "segundos_entrenamiento_total": 412.6163952499919,
+  "checkpoint_mb": 9.144523,
+  "total": 2230277,
+  "entrenables": 480325
+}
