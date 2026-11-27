@@ -51,10 +51,19 @@ Las fechas de los primeros cinco registros corresponden a los commits locales re
 - Registrar la distribución real de responsabilidades de los integrantes.
 - Confirmar las decisiones de implementación y redactar las interpretaciones propias de los resultados.
 - Completar las columnas de observación y causa hipotética de los ocho errores. Distinguir observación de causalidad demostrada.
-- Realizar la demostración de inferencia individual y registrar su salida.
-- Registrar el identificador real del commit de evaluación final una vez publicado.
+- Demostración de inferencia individual: completada; ver cierre técnico.
+- Commit de evaluación final: `18aa651`, publicado.
 - Completar informe, conclusiones, declaración de ayuda de IA y preparación de sustentación.
 
 ## Uso de IA
 
 Se utilizó ChatGPT como apoyo para la programación de scripts, organización de evidencias y documentación técnica. Las hipótesis, decisiones experimentales, interpretaciones de errores y conclusiones deben ser revisadas y desarrolladas por el equipo de acuerdo con las instrucciones del docente. El equipo deberá ajustar esta declaración para que refleje fielmente el uso realizado.
+
+## Cierre técnico — 26 de noviembre de 2026 (hora local)
+
+- Commit `04f91f3`: entrenamiento de las cinco configuraciones; evaluación de test ejecutada después de finalizar los entrenamientos.
+- Incidencia: faltaban los archivos individuales en Descargas; se utilizó el ZIP de cierre visual y se verificó la generación de ocho errores y cuatro Grad-CAM.
+- Incidencia: `git diff` abrió el paginador y faltó descargar la bitácora; se salió del visor y se repitió con `git --no-pager`.
+- Commit `18aa651`: evaluación final, métricas, matrices, errores, README y bitácora. Push confirmado; rama main sincronizada y árbol limpio.
+- Inferencia individual ejecutada: `test-cbb-95.jpg`, real CBB, predicha Healthy, softmax 0,9800334572792053; coincide con la predicción previamente registrada.
+- Pendientes del equipo: responsabilidades reales; observación, hipótesis de causa y revisión de cada error; interpretación de métricas, conclusiones y declaración de ayudas; acreditar control intermedio según corresponda.
