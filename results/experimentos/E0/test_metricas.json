@@ -1,0 +1,11 @@
+{
+  "loss": 1.2493267847421068,
+  "accuracy": 0.5787506673785371,
+  "macro_f1": 0.4494780736438992,
+  "experimento": "E0",
+  "n_test": 1873,
+  "device": "mps",
+  "batch_inferencia": 32,
+  "ms_forward_por_imagen_promedio": 0.20899946339991793,
+  "nota_tiempo": "Forward por lotes sincronizados; no incluye lectura ni transferencia. No es latencia batch=1."
+}

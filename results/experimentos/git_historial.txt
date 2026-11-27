@@ -1,3 +1,4 @@
+04f91f3 Experimentos: entrenamiento completo E0 E1 E2 E3 y augmentation
 fc39816 Pipeline: implementacion de modelos E0 E1 E2 E3 y augmentation
 fd323c7 EDA: analisis descriptivo, calidad de datos, desbalance, IQR y visualizaciones
 986dea6 Particiones limpias: sin duplicados entre particiones ni etiquetas contradictorias

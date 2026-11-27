@@ -1,0 +1,9 @@
+archivo,real,predicha_registro,confianza_registro_mps,predicha_cpu,confianza_cpu,observacion_equipo,causa_hipotesis_equipo
+test-cbb-95.jpg,cbb,healthy,0.9800332188606262,healthy,0.9800334572792053,,
+test-cbsd-57.jpg,cbsd,healthy,0.9825381636619568,healthy,0.9825381636619568,,
+test-cgm-180.jpg,cgm,healthy,0.9127402901649475,healthy,0.9127405881881714,,
+test-cmd-628.jpg,cmd,healthy,0.9986640214920044,healthy,0.9986639022827148,,
+test-cbsd-215.jpg,cbsd,cbb,0.9989944100379944,cbb,0.9989944100379944,,
+test-cgm-23.jpg,cgm,cmd,0.9972735047340393,cmd,0.9972735047340393,,
+test-cmd-66.jpg,cmd,cgm,0.9986981153488159,cgm,0.9986981153488159,,
+test-healthy-66.jpg,healthy,cbsd,0.9047070741653442,cbsd,0.9047073721885681,,

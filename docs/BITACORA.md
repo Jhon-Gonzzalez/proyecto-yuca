@@ -1,0 +1,60 @@
+# Bitácora técnica — Proyecto Yuca
+
+**Integrantes:** Jhon Mario González Acosta y Fabián Andrés Salgado  
+**Asignatura:** Aprendizaje Computacional — Ingeniería de Sistemas, Universidad de Córdoba  
+**Repositorio:** https://github.com/Jhon-Gonzzalez/proyecto-yuca
+
+## Registro verificable de actividades
+
+Las fechas de los primeros cinco registros corresponden a los commits locales reportados por el equipo. Los registros posteriores corresponden a la sesión del 26 de noviembre de 2026, hora local de Colombia. Esta bitácora documenta evidencias técnicas; no atribuye tareas individuales que no hayan sido confirmadas.
+
+| Fecha | Actividad | Evidencia |
+|---|---|---|
+| 18/11/2026 | Configuración de Python, PyTorch, entorno virtual y MPS | `20b810a`, `check_env.py`, `requirements.txt` |
+| 18/11/2026 | Inventario de iCassava 2019: 9.430 imágenes originales | `df30018`, `results/inventario.csv` |
+| 19/11/2026 | Detección de duplicados exactos y perceptuales; comparación de umbrales dHash 4 y 0 | `2ab6087`, `results/duplicados_exactos.csv`, `results/casi_duplicados.csv` |
+| 19/11/2026 | Limpieza del manifiesto: 63 exclusiones, 9.367 imágenes restantes | `986dea6`, `results/particiones_limpias.csv`, `results/excluidas.csv` |
+| 24/11/2026 | Ejecución del EDA: 9.367 archivos leídos, cero errores | Salida de terminal y ZIP de evidencias EDA |
+| 25/11/2026 | Registro del análisis descriptivo, IQR, calidad y visualizaciones | `fd323c7`, `src/eda_yuca_completo.py`, `results/eda_completo/` |
+| 26/11/2026 | Conexión del repositorio local con GitHub y publicación de los cinco commits originales | `git push -u origin main` exitoso |
+| 26/11/2026 | Verificación del pipeline, GPU MPS, manifiesto y dimensiones de salida | `fc39816`, `src/entrenar_yuca.py`, `src/ejecutar_yuca.py`, `docs/protocolo_implementacion.txt` |
+| 26/11/2026 | Entrenamiento de E0, E1, E2, E3 y ADICIONAL; selección del checkpoint por Macro-F1 de validación | `04f91f3`, `results/experimentos/` |
+| 26/11/2026 | Evaluación de los cinco checkpoints sobre las 1.873 imágenes de Test | `test_metricas.json`, matrices, predicciones, `comparacion.csv`, ZIP de evidencias |
+| 26/11/2026 | Generación de ocho ejemplos de error y cuatro mapas Grad-CAM de E2; concordancia CPU/MPS en los ocho casos | `8_errores_E2.csv`, `8_errores_E2.png`, `4_gradcam_E2.png` (evidencias locales) |
+
+## Resultados registrados
+
+| Experimento | Épocas | Mejor época | Macro-F1 validación | Accuracy test | Macro-F1 test |
+|---|---:|---:|---:|---:|---:|
+| E0 | 11 | 8 | 40,75 % | 57,88 % | 44,95 % |
+| E1 | 6 | 3 | 67,63 % | 73,36 % | 66,33 % |
+| E2 | 11 | 8 | 74,28 % | 79,98 % | 73,56 % |
+| E3 | 6 | 3 | 63,66 % | 72,08 % | 63,37 % |
+| ADICIONAL | 12 | 9 | 66,57 % | 70,53 % | 64,47 % |
+
+## Incidencias técnicas y resolución
+
+- Se identificaron duplicados y etiquetas contradictorias. Se registraron exclusiones en el manifiesto sin borrar las imágenes originales.
+- La primera ejecución del EDA falló porque el script no estaba en Descargas; la ejecución posterior procesó correctamente todas las imágenes limpias.
+- En la primera ejecución del análisis visual faltaban dos archivos en Descargas. Se distribuyeron en un ZIP y posteriormente se obtuvieron las tres evidencias solicitadas.
+- No se reportaron errores durante los cinco entrenamientos ni en su evaluación final.
+
+## Trazabilidad y límites
+
+- Manifiesto SHA-256: `885fce54f03e0a5d227baf7ea0d8b5a580b377670f3677f090dbc7c0eaeb141a`.
+- Semilla de entrenamiento: 42; una corrida por configuración. No se ha medido estabilidad entre semillas.
+- Las imágenes originales y los checkpoints se conservan localmente. No publicar fotografías sin verificar la licencia.
+- Los resultados de test no deben utilizarse para ajustar retrospectivamente el protocolo ni las hipótesis originales.
+
+## Pendientes de validación por el equipo
+
+- Registrar la distribución real de responsabilidades de los integrantes.
+- Confirmar las decisiones de implementación y redactar las interpretaciones propias de los resultados.
+- Completar las columnas de observación y causa hipotética de los ocho errores. Distinguir observación de causalidad demostrada.
+- Realizar la demostración de inferencia individual y registrar su salida.
+- Registrar el identificador real del commit de evaluación final una vez publicado.
+- Completar informe, conclusiones, declaración de ayuda de IA y preparación de sustentación.
+
+## Uso de IA
+
+Se utilizó ChatGPT como apoyo para la programación de scripts, organización de evidencias y documentación técnica. Las hipótesis, decisiones experimentales, interpretaciones de errores y conclusiones deben ser revisadas y desarrolladas por el equipo de acuerdo con las instrucciones del docente. El equipo deberá ajustar esta declaración para que refleje fielmente el uso realizado.
