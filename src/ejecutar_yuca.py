@@ -7,7 +7,7 @@ import sys
 import zipfile
 from pathlib import Path
 
-EXPS = ('E0', 'E1', 'E2', 'E3', 'ADICIONAL')
+EXPS = ('E0', 'E1', 'E2', 'E3', 'ADICIONAL', 'E5')
 OUT = Path('results/experimentos')
 TRAINER = Path('src/entrenar_yuca.py')
 

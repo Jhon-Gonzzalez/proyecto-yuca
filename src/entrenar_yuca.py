@@ -35,7 +35,7 @@ EXPECTED = {'train': [455, 1430, 763, 2655, 316],
 EXPECTED_HASH = '885fce54f03e0a5d227baf7ea0d8b5a580b377670f3677f090dbc7c0eaeb141a'
 SEED, BATCH, EPOCHS, PATIENCE = 42, 32, 15, 3
 MEAN, STD = [0.485, 0.456, 0.406], [0.229, 0.224, 0.225]
-EXPERIMENTS = ['E0', 'E1', 'E2', 'E3', 'ADICIONAL']
+EXPERIMENTS = ['E0', 'E1', 'E2', 'E3', 'ADICIONAL', 'E5']
 
 
 def seed_all():
@@ -137,6 +137,12 @@ class SmallCNN(nn.Module):
 def build_model(exp, pretrained):
     if exp == 'E0':
         return SmallCNN()
+    if exp == 'E5':
+        weights = models.EfficientNet_B0_Weights.IMAGENET1K_V1 if pretrained else None
+        model = models.efficientnet_b0(weights=weights)
+        model.requires_grad_(False)
+        model.classifier[-1] = nn.Linear(model.classifier[-1].in_features, len(CLASSES))
+        return model
     if exp == 'E3':
         weights = models.ResNet18_Weights.IMAGENET1K_V1 if pretrained else None
         model = models.resnet18(weights=weights)
@@ -248,7 +254,7 @@ def check(df, sha, device):
     if missing:
         raise FileNotFoundError(missing[:5])
     print('Pesos de clase:', dict(zip(CLASSES, class_weights(df, torch.device('cpu')).tolist())))
-    for exp in ['E0', 'E1', 'E3']:
+    for exp in ['E0', 'E1', 'E3', 'E5']:
         # Solo una muestra de train, pesos aleatorios para comprobar dimensiones, sin entrenar.
         x, y, _ = next(iter(loader(df, 'train', exp, batch=2)))
         model = build_model(exp, pretrained=False).to(device).eval()
@@ -271,7 +277,7 @@ def train(df, sha, device, exp):
         e1cfg = json.loads((OUT / 'E1' / 'config.json').read_text())
         if e1cfg['manifest_sha256'] != sha:
             raise ValueError('E1 y E2 tienen manifiestos distintos.')
-    model = build_model(exp, pretrained=exp in ('E1', 'E3', 'ADICIONAL'))
+    model = build_model(exp, pretrained=exp in ('E1', 'E3', 'ADICIONAL', 'E5'))
     if exp == 'E2':
         model.load_state_dict(torch.load(source, map_location='cpu', weights_only=True))
     model.to(device)
