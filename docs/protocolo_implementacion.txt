@@ -1,0 +1,53 @@
+PROYECTO YUCA — apoyo de implementación
+======================================
+El script implementa el protocolo documentado en el EDA de 18 páginas y su
+versión de 10 páginas. No incluye resultados ni pesos entrenados. Debe ser
+revisado, comprendido y modificado por el equipo, y declarado como ayuda de IA.
+El profesor no autoriza delegar hipótesis, decisiones de protocolo,
+interpretaciones, causas de errores ni conclusiones.
+
+Decisiones técnicas de implementación no detalladas en el EDA (validar):
+- E0: 3 convoluciones de 16/32/64 canales, max pooling, pooling adaptativo
+  y salida lineal de 5 clases. Resize lado corto 73 y CenterCrop 64.
+- AdamW: weight_decay=0.01 (valor por defecto habitual); LR E0=0.001.
+- MobileNetV2 y ResNet18: pesos ImageNet V1; tamaño 224, resize 256.
+- E2: último bloque residual invertido features[-2]; la proyección 1x1
+  final permanece congelada. Carga el mejor checkpoint de E1.
+- BatchNorm congelada se conserva en modo evaluación; las capas entrenables
+  se ajustan. En E2 la cabeza mantiene LR 0.001 y el bloque LR 0.0001.
+- Adicional: repite E1 desde ImageNet con volteos de probabilidad 0.5,
+  rotación ±15° y recorte aleatorio cuadrado 80–100 % del área del crop.
+  Relleno neutro en rotación, sin jitter de color.
+- Un trabajador (num_workers=0); early stopping sin min_delta, empate no
+  cuenta como mejora; checkpoint de mayor macro-F1 de validación.
+- Tiempo de inferencia: promedio por imagen de forwards sincronizados
+  en lotes de 32 (no latencia individual); entrenamiento incluye validación,
+  persistencia y generación de gráficas. Una sola corrida por experimento
+  no permite estimar variabilidad entre semillas. Para estabilidad, planear
+  repeticiones controladas antes de acceder a test si el equipo lo requiere.
+
+Uso desde la raíz del proyecto con .venv activado:
+  python -u src/entrenar_yuca.py --verificar
+  python -u src/entrenar_yuca.py --entrenar E0
+  python -u src/entrenar_yuca.py --entrenar E1
+  python -u src/entrenar_yuca.py --entrenar E2
+  python -u src/entrenar_yuca.py --entrenar E3
+  python -u src/entrenar_yuca.py --entrenar ADICIONAL
+E1 y E3 requieren descarga inicial de pesos oficiales de torchvision.
+El manifiesto debe coincidir con el SHA-256 del EDA. Si cambia, revisar el
+motivo; no desactivar la comprobación sin validar el cambio.
+
+Cuando todos los modelos, hiperparámetros y experimentos estén fijados,
+se puede ejecutar --evaluar E0, E1, E2, E3 y ADICIONAL por separado.
+No usar los resultados de test para modificar el protocolo. El código evita
+sobrescribir una corrida existente, incluso si fue interrumpida: conservar
+sus evidencias y revisar la causa antes de repetir. Los .pt no se incluyen
+normalmente en Git. No compartir imágenes originales sin verificar licencia.
+
+Salidas reales en results/experimentos/<experimento>/:
+config.json, historial.csv, curvas.png, mejor.pt, entrenamiento.json.
+Tras evaluar: test_metricas.json, metricas_por_clase.csv,
+matriz_confusion.csv/png, predicciones.csv y errores.csv.
+La interpretación de esas métricas, los 8 errores reales y conclusiones
+pertenece al equipo; no se generan automáticamente. Grad-CAM es opcional
+según el enunciado y no está implementado en este script.
