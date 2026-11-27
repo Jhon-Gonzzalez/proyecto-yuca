@@ -5,8 +5,8 @@ Universidad de Córdoba · Aprendizaje Computacional · 2026
 1. Problema y alcance (1 min). Clasificación supervisada en cinco clases; comparación académica, no diagnóstico agronómico.
 2. Datos y control de calidad (1 min). iCassava 2019, 9.430 imágenes originales; 63 exclusiones; manifiesto limpio de 9.367 (5.619/1.875/1.873). MD5 y dHash; particiones independientes según los controles realizados; falta ID de planta/finca.
 3. EDA y protocolo (1 min). CMD 2.655 frente a Healthy 316 en train; pesos de clases; Macro-F1; semilla 42, AdamW, lotes de 32, máximo 15 épocas y paciencia 3. E0 64×64, demás 224×224.
-4. Arquitecturas y experimentos (1–2 min). E0 CNN propia; E1 MobileNetV2 congelada; E2 ajuste parcial desde E1; E3 ResNet18 congelada; E4/ADICIONAL repetición de E1 con augmentation. Distinguir arquitectura y régimen de entrenamiento.
-5. Resultados (1–2 min). Mostrar `comparacion.csv` y curvas. Los cinco experimentos usaron 1.873 imágenes de test. E2: 79,98 % accuracy, 73,56 % Macro-F1, 1.498 aciertos y 375 errores. Comparar E1/E3 y E1/E2; discutir ustedes la relación con las hipótesis, recursos y estabilidad.
+4. Arquitecturas y experimentos (1–2 min). E0 CNN propia; E1 MobileNetV2 congelada; E2 ajuste parcial desde E1; E3 ResNet18 congelada; E4/ADICIONAL repetición de E1 con augmentation; E5 EfficientNet-B0 congelada. Distinguir arquitectura y régimen de entrenamiento.
+5. Resultados (1–2 min). Mostrar `comparacion.csv` y curvas. Los seis experimentos usaron 1.873 imágenes de test. E2: 79,98 % accuracy, 73,56 % Macro-F1, 1.498 aciertos y 375 errores. E5: 78,96 % accuracy y 71,80 % Macro-F1. Comparar E1/E3, E1/E2 y E5 con los extractores congelados; discutir ustedes la relación con las hipótesis, recursos y estabilidad.
 6. Errores y límites (1 min). Mostrar ocho imágenes y Grad-CAM localmente. Cada integrante explica sus propias observaciones, hipótesis causales y qué prueba haría para comprobarlas. Los scores no están calibrados; no afirmar causalidad a partir de Grad-CAM.
 7. Demostración operativa y cierre (1–2 min). Cargar datos, mostrar una inferencia correcta y una incorrecta. Cada integrante explica lo que hizo y su propia conclusión.
 
@@ -60,7 +60,7 @@ PY
 | ¿Cómo evitan la fuga de datos? | Control MD5/dHash, manifiesto limpio, test no usado para ajustar hiperparámetros; riesgo residual por capturas relacionadas. |
 | ¿Qué hace la pérdida ponderada? | Penaliza los errores según pesos inversos a frecuencia de train; no inventa imágenes. |
 | ¿Qué es Macro-F1? | Media aritmética del F1 de las cinco clases, igual peso por clase. |
-| ¿Qué se congela en E1 y E3? | Extractor de características; solo se ajusta cabeza. BatchNorm congelada en modo evaluación. |
+| ¿Qué se congela en E1, E3 y E5? | Extractor de características; solo se ajusta cabeza. BatchNorm congelada en modo evaluación. |
 | ¿Qué cambia en E2? | Carga E1, descongela features[-2], LR 0,0001 en bloque y 0,001 en cabeza. |
 | ¿Cómo comparas E1 y E3? | Mismo régimen de extracción, mismos splits, presupuesto y transformaciones; comparar Macro-F1 y recursos. |
 | ¿Es E4 una arquitectura distinta? | No, es una configuración experimental de MobileNetV2. |
@@ -79,3 +79,9 @@ PY
 - Confirmar roles y declaración de ayuda externa; el enunciado no permite delegar interpretación ni conclusiones a IA.
 - Acreditar, si corresponde, el control intermedio obligatorio; no se puede sustituir retrospectivamente por el informe.
 - Revisar permiso de redistribución del dataset antes de publicar imágenes; conservar las figuras fotográficas localmente.
+
+## Ampliación E5
+- Cuatro arquitecturas distintas, seis experimentos. E5 usa el mismo protocolo que E1/E3. Tiene 4.013.953 parámetros totales y 6.405 entrenables; 13 épocas, mejor época 10.
+- Mostrar `results/experimentos/E5/curvas.png`, `matriz_confusion.csv` y `metricas_por_clase.csv`. E5 supera E1 en 5,47 pp de Macro-F1 test; queda 1,76 pp por debajo de E2.
+- Preguntas para responder con razonamiento propio: ¿por qué comparar primero E1/E3/E5? ¿Qué implica que E5 tenga recall Healthy superior a E2 y recall CBB inferior? ¿Qué limitación introduce añadir E5 después del primer test?
+- Propuesta de exposición: Jhon explica datos, limpieza, EDA y carga; Fabián arquitecturas, métricas, errores; ambos explican decisiones y demostración.

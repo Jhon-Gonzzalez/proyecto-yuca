@@ -67,3 +67,15 @@ Se utilizó ChatGPT como apoyo para la programación de scripts, organización d
 - Commit `18aa651`: evaluación final, métricas, matrices, errores, README y bitácora. Push confirmado; rama main sincronizada y árbol limpio.
 - Inferencia individual ejecutada: `test-cbb-95.jpg`, real CBB, predicha Healthy, softmax 0,9800334572792053; coincide con la predicción previamente registrada.
 - Pendientes del equipo: responsabilidades reales; observación, hipótesis de causa y revisión de cada error; interpretación de métricas, conclusiones y declaración de ayudas; acreditar control intermedio según corresponda.
+
+## Ampliación tras el control intermedio — 26 de noviembre de 2026 (hora Colombia)
+
+- El integrante confirmó que ambos participaron en el proyecto y presentaron el control intermedio. Según su relato, el docente pidió más de tres modelos y análisis riguroso. No hay acta ni fecha exacta de la revisión; no se afirma aprobación formal ni cumplimiento del plazo.
+- `df47ed7`: documentación original. `3d00d62`: registro de control y autoría. `b209b5b`: código de E5 y observaciones del docente.
+- Problema: tres arquitecturas no satisfacían la nueva indicación comunicada. Alternativa considerada: EfficientNet-B0 como tercera arquitectura preentrenada. Implementación asistida: mismo régimen de E1/E3 (extractor congelado, 224 × 224, ImageNet V1, AdamW, semilla 42, batch 32, 15 épocas, paciencia 3, pérdida ponderada); comprobar y revisar por el equipo.
+- Prueba de verificación MPS correcta: 4.013.953 parámetros, 6.405 entrenables; manifiesto íntegro. Primer intento falló al duplicar el comando (`E5caffeinate`); evaluación prematura rechazó la falta de entrenamiento. Se encadenaron entrenamiento, evaluación y exportación con `&&`.
+- Ejecución E5: 13 épocas, mejor época 10, Macro-F1 validación 71,58 %, Accuracy validación 78,99 % (redondeado del log), 537,13 s, checkpoint 16,330 MB. Test: Accuracy 78,96 %, Macro-F1 71,80 %, 1.479 aciertos y 394 errores de 1.873; forward promedio 2,816 ms/imagen por lotes.
+- Verificación posterior: 11.238 predicciones de seis experimentos coinciden con manifiesto, métricas y matrices de confusión. Los 50 archivos de los cinco experimentos originales son idénticos a los del ZIP anterior.
+- E5 se realizó después del primer test; la comparación adicional es exploratoria. Se requiere validación independiente para confirmar el resultado y más semillas para evaluar estabilidad.
+- Participación conjunta declarada de ambos integrantes; propuesta de exposición: Jhon (datos, limpieza, EDA, pipeline), Fabián (arquitecturas, métricas, errores), ambos (discusión y demostración). No se atribuyen retrospectivamente tareas individuales no comprobadas.
+- Se actualizó el informe con la cuarta arquitectura y los seis experimentos. Las interpretaciones y conclusiones propias siguen siendo responsabilidad de ambos, según la sección 8 del enunciado. La ayuda de IA abarcó generación y revisión de scripts, análisis de cifras y redacción, y debe declararse íntegramente.

@@ -33,7 +33,7 @@ python -u src/ejecutar_yuca.py entrenar
 python -u src/ejecutar_yuca.py evaluar
 ```
 
-El segundo comando debe ejecutarse solo después de fijar el protocolo. Si ya existen resultados, preservarlos antes de repetir el experimento. E2 depende del checkpoint de E1. Los pesos ImageNet se descargan durante la primera ejecución de E1/E3.
+El segundo comando debe ejecutarse solo después de fijar el protocolo. Si ya existen resultados, preservarlos antes de repetir el experimento. E2 depende del checkpoint de E1. Los pesos ImageNet se descargan durante la primera ejecución de E1/E3/E5.
 
 ## Protocolo y experimentos
 
@@ -43,7 +43,8 @@ Semilla 42, batch 32, máximo 15 épocas, early stopping con paciencia 3 por mac
 - E1: MobileNetV2 con extractor congelado.
 - E2: MobileNetV2, ajuste parcial desde el mejor checkpoint de E1.
 - E3: ResNet18 con extractor congelado.
-- ADICIONAL: E1 con aumentos geométricos de datos solo durante entrenamiento.
+- ADICIONAL (E4): E1 con aumentos geométricos de datos solo durante entrenamiento.
+- E5: EfficientNet-B0 ImageNet V1, extractor congelado y cabeza entrenable. Ampliación tras el control intermedio, según lo informado por el equipo; protocolo de E1/E3, sin augmentation.
 
 ## Resultados de la corrida registrada
 
@@ -56,6 +57,7 @@ Las cifras corresponden a 1.873 imágenes de test por experimento, con checkpoin
 | E2 | 0.7428 | 0.7998 | 0.7356 | 8 | 412.62 | 9.145 |
 | E3 | 0.6366 | 0.7208 | 0.6337 | 3 | 242.18 | 44.787 |
 | ADICIONAL | 0.6657 | 0.7053 | 0.6447 | 9 | 503.57 | 9.145 |
+| E5 | 0.7158 | 0.7896 | 0.7180 | 10 | 537.13 | 16.330 |
 
 Fuente: `results/experimentos/comparacion.csv` y los archivos `test_metricas.json`, `predicciones.csv`, `matriz_confusion.csv` e `historial.csv` de cada corrida.
 
@@ -71,10 +73,10 @@ El tiempo de inferencia registrado es el promedio por imagen de forwards sincron
 
 ## Alcance y limitaciones
 
-Una corrida por configuración no permite estimar estabilidad entre semillas. No se dispone de identificadores de planta o finca, y no se ha certificado la ausencia de todos los casi duplicados. Las imágenes proceden de Uganda; el desempeño no constituye validación agronómica para Colombia.
+Cuatro arquitecturas, seis experimentos. E5 se añadió después de evaluar los cinco originales y se evaluó en el mismo test; la comparación adicional es exploratoria. No se modificaron las hipótesis originales ni los resultados previos. Una corrida por configuración no permite estimar estabilidad entre semillas. No se dispone de identificadores de planta o finca, y no se ha certificado la ausencia de todos los casi duplicados. Las imágenes proceden de Uganda; el desempeño no constituye validación agronómica para Colombia.
 
 ## Referencias y asistencia
 
 - Mwebaze et al. (2019). [iCassava 2019 Fine-Grained Visual Categorization Challenge](https://arxiv.org/abs/1908.02900).
 - [TensorFlow Datasets: cassava](https://www.tensorflow.org/datasets/catalog/cassava).
-- ChatGPT se usó como apoyo en el código, documentación, organización de evidencias y verificación de métricas. Los entrenamientos y la evaluación se ejecutaron localmente. Las decisiones e interpretaciones deben ser revisadas y defendidas por los integrantes del equipo.
+- ChatGPT se usó para generar y revisar scripts, documentación, organización de evidencias y verificación de métricas. Su uso fue más amplio que consultas conceptuales y depuración puntual; debe declararse y revisarse frente a la sección 8 del enunciado. Los entrenamientos y la evaluación se ejecutaron localmente. Las decisiones e interpretaciones deben ser revisadas y defendidas por los integrantes del equipo.

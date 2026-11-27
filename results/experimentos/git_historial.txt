@@ -1,3 +1,7 @@
+b209b5b Ampliacion E5: EfficientNet-B0 y registro de observaciones del docente
+3d00d62 Documentacion: registro verificable del control intermedio y autoria
+df47ed7 Documentacion: informe experimental, bitacora y guia de sustentacion
+18aa651 Evaluacion final: metricas, matrices, errores y bitacora
 04f91f3 Experimentos: entrenamiento completo E0 E1 E2 E3 y augmentation
 fc39816 Pipeline: implementacion de modelos E0 E1 E2 E3 y augmentation
 fd323c7 EDA: analisis descriptivo, calidad de datos, desbalance, IQR y visualizaciones
